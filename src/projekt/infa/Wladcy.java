@@ -10,16 +10,20 @@ import java.util.Scanner;
 
 public class Wladcy {
 
-    public static final String SCIEZKA_PLIK = "C:\\Users\\Deny\\Downloads\\ListaKr-li-terminalApp\\zasoby\\plikWladcow.txt";
+    public static final String SCIEZKA_PLIK = "C:\\Users\\zmddd\\Desktop\\Rzeczy\\Projekty\\ListaKroli-terminalApp\\zasoby\\plikWladcow.txt";
     private List<Wladca> listaWladcow = new ArrayList<>();
 
 
-    public void dodajWladce(Wladca wladca) {
-        listaWladcow.add(wladca);
+    public void dodajWladce(int numer, Wladca wladca) {
+        if (numer > listaWladcow.size()) {
+            listaWladcow.add(wladca);
+        } else {
+            listaWladcow.add(numer - 1, wladca);
+        }
     }
 
-    public void usunWladce(Wladca wladca) {
-        listaWladcow.remove(wladca);
+    public void usunWladce(int numer) {
+        listaWladcow.remove(listaWladcow.get(numer - 1));
     }
 
     public int pobierzIloscWladcow() {
@@ -30,15 +34,15 @@ public class Wladcy {
         return listaWladcow.get(numer - 1);
     }
 
-    public void zamienWladcowMiejscami(int numerWladcy1, int numerWladcy2) {
-        Wladca wladca1 = listaWladcow.get(numerWladcy1);
-        Wladca wladca2 = listaWladcow.get(numerWladcy2);
-        listaWladcow.set(numerWladcy2, wladca1);
-        listaWladcow.set(numerWladcy1, wladca2);
+    public void edytujWladce(int numer, Wladca wladca) {
+        listaWladcow.set(numer - 1, wladca);
     }
 
-    public void dodajWladceWMiejscu(Wladca wladca, int numer) {
-        listaWladcow.add(numer - 1, wladca);
+    public void zamienWladcowMiejscami(int numerWladcy1, int numerWladcy2) {
+        Wladca wladca1 = listaWladcow.get(numerWladcy1 - 1);
+        Wladca wladca2 = listaWladcow.get(numerWladcy2 - 1);
+        listaWladcow.set(numerWladcy2 - 1, wladca1);
+        listaWladcow.set(numerWladcy1 - 1, wladca2);
     }
 
     public void zapiszWladcowDoPliku() {

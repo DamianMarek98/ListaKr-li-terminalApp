@@ -70,7 +70,20 @@ public class Wladca {
     }
 
     public boolean waliduj() {
-        //todo wypelnic
+        if (rokSmierci < rokUrodzenia) {
+            System.out.println("Rok śmierci nie może być przed rokiem urodzenia!");
+            return false;
+        } else if (rokZakonczeniaRzadow < rokRozpoczeciaRzadow) {
+            System.out.println("Rok rozpoczęcia rządów nie może być przed rokiem zakończenia rządów!");
+            return false;
+        } else if (rokZakonczeniaRzadow >= rokSmierci || rokZakonczeniaRzadow <= rokUrodzenia) {
+            System.out.println("Rok zakończenia rządów nie zawiera się w datach życia władcy!");
+            return false;
+        } else if (rokRozpoczeciaRzadow <= rokUrodzenia) {
+            System.out.println("Rok rozpoczęcia rządów nie zawiera się w datach życia władcy!");
+            return false;
+        }
+
         return true;
     }
 }
